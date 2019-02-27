@@ -10,17 +10,14 @@ InstrumentFamilies.prototype.bindEvents = function() {
 
   PubSub.subscribe('SelectInstrumentView:change', (evt) => {
     const chosenInstrumentName = evt.detail;
-    const selectedInstrument = this.findByName(chosenInstrumentName);
-    PubSub.publish('instrumentReady', selectedInstrument);
-    console.log(selectedInstrument);
+    this.publishFamilyDetail(chosenInstrumentName);
+    console.log(chosenInstrumentName);
   });
 };
 
-InstrumentFamilies.prototype.findByName = function(searchName) {
-  const foundInstrument = this.instrumentsData.find((currentInstrument) => {
-    return currentInstrument.name === searchName;
-  });
-  return foundInstrument;
+InstrumentFamilies.prototype.publishFamilyDetail = function(selectedIndex) {
+  const selectedFamily = this.instrumentsData[selectedIndex];
+  PubSub.publish('instrumentReady', selectedFamily)
 };
 
 module.exports = InstrumentFamilies;

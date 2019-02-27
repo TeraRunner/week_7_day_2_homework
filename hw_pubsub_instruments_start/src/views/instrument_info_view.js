@@ -7,6 +7,7 @@ const InstrumentInfoView = function(container) {
 InstrumentInfoView.prototype.bindEvents = function() {
   PubSub.subscribe('instrumentReady', (evt) => {
     const instrumentData = evt.detail;
+    console.log(instrumentData);
     this.render(instrumentData);
   });
 };
