@@ -11,6 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const instrumentDropdown = new SelectInstrumentView(selectInstrument);
   instrumentDropdown.bindEvents();
 
+  const detailsContainer = document.querySelector('section.planet-details');
+  const instrumentView = new InstrumentInfoView(detailsContainer);
+  instrumentView.bindEvents();
+
   const instrumentsDataSource = new InstrumentFamilies(instrumentsFamilyData);
   instrumentsDataSource.bindEvents();
 
